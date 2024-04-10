@@ -214,23 +214,26 @@ class LinkedList{
 
 }
 
-const linkedList = new LinkedList();
+// const linkedList = new LinkedList();
 
-// linkedList.append(10);
-// linkedList.append(20);
-// linkedList.append(30);
-// linkedList.append(40);
-// linkedList.prepend(100);
-// linkedList.prepend(-100);
-// linkedList.append(50)
-// linkedList.removeFromStart()
-// linkedList.removeFromEnd()
-// linkedList.removeFromEnd()
-// linkedList.reverse()
-// linkedList.removeFromMiddle()
-const arr = [12,34,12,11,67,12];
-linkedList.removeByvalue(-100)
-linkedList.removeByIndex(4);
-linkedList.arrayToLinkedList(arr)
-linkedList.removeDuplicates()
-linkedList.print();
+// // linkedList.append(10);
+// // linkedList.append(20);
+// // linkedList.append(30);
+// // linkedList.append(40);
+// // linkedList.prepend(100);
+// // linkedList.prepend(-100);
+// // linkedList.append(50)
+// // linkedList.removeFromStart()
+// // linkedList.removeFromEnd()
+// // linkedList.removeFromEnd()
+// // linkedList.reverse()
+// // linkedList.removeFromMiddle()
+// const arr = [12,34,12,11,67,12];
+// linkedList.removeByvalue(-100)
+// linkedList.removeByIndex(4);
+// linkedList.arrayToLinkedList(arr)
+// linkedList.removeDuplicates()
+// linkedList.print();
+
+
+module.exports = LinkedList 

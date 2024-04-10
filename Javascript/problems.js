@@ -71,3 +71,29 @@ for(let key in person){
     }
 }
 // console.log(person);
+
+// 10. generator: multiples of given number endlessly
+function* multiplicationTable(x){
+    for(let i=1 ; i<Infinity; i++){
+        yield i*x;
+    }
+}
+let iterator = multiplicationTable(5);
+// console.log(iterator.next().value);
+// console.log(iterator.next().value);
+// console.log(iterator.next().value);
+// console.log(iterator.next().value);
+
+
+// 11.reduce(): count occurrences of value
+const arrays = [1, 2, 3, 2, 1, 3, 2];
+const valueToCount = 2;
+
+const count = arrays.reduce((acc, val) => {
+ if (val === valueToCount) {
+    return acc + 1;
+ }
+ return acc;
+}, 0);
+
+console.log(count); // Output: 3
