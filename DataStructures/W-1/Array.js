@@ -58,3 +58,5 @@ const chunkSize = 3;
  console.log(chunkArray(originalArray, chunkSize));
 
 
+
+

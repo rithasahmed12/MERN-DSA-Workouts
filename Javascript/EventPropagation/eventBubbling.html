@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Propagation Example</title>
+<style>
+    div { padding: 10px; margin: 5px; border: 1px solid black; }
+</style>
+</head>
+<body>
+
+<div id="outer">
+    <div id="middle">
+        <div id="inner">Click Me</div>
+    </div>
+</div>
+
+<script>
+document.getElementById('outer').addEventListener('click', function(event) {
+    console.log('Outer div clicked');
+});
+
+document.getElementById('middle').addEventListener('click', function(event) {
+    console.log('Middle div clicked');
+});
+
+document.getElementById('inner').addEventListener('click', function(event) {
+    console.log('Inner div clicked');
+});
+</script>
+
+</body>
+</html>
