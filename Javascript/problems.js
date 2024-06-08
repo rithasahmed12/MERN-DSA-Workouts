@@ -58,7 +58,6 @@ let strings = array.filter((element)=> typeof element === "string" )
 // 8. Extract Digits from string
 let str = "Hel123lo4";
 str = str.split("");
-console.log(str);
 let digit = str.map(Number).filter((element)=> !isNaN(element) );
 // console.log(digit);
 
@@ -97,3 +96,50 @@ const count = arrays.reduce((acc, val) => {
 }, 0);
 
 console.log(count); // Output: 3
+
+// 12. Chunk Array into subarray of n elements
+function chunkArray(array,chunksize){
+    let chunkedArr = [];
+    for(let i=0 ; i<array.length; i+=chunksize){
+        chunkedArr.push(array.slice(i,i+chunksize));
+    }
+    return chunkedArr;
+}
+let normArray = [12,34,11,3,4,1,9,71];
+let chunkSize =3;
+let chunkedArr = chunkArray(normArray,chunkSize);
+console.log(chunkedArr);
+
+
+// 13.Function to find the extra letter added to the string:
+function findExtraLetter(str1, str2) {
+    const charCount = {};
+    
+    // Count characters in str1
+    for (let char of str1) {
+        charCount[char] = (charCount[char] || 0) + 1;
+    }
+    
+    // Subtract characters in str2
+    for (let char of str2) {
+        charCount[char] = (charCount[char] || 0) - 1;
+    }
+    
+    // Find the extra letter
+    for (let char in charCount) {
+        if (charCount[char] !== 0) {
+            return char;
+        }
+    }
+    
+    // If no extra letter found
+    return null;
+}
+
+// Example usage:
+const extraLetter = findExtraLetter("abcd", "abecd");
+// console.log("Extra letter:", extraLetter); // Output: "e"
+
+
+
+

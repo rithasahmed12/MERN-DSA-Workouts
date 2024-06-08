@@ -85,8 +85,9 @@ function mergeSort(arr){
     return join(mergeSort(left), mergeSort(right));
 
 }
-
+[12,40,-1,-9,4,2,6,34]
 function join(left,right){
+    console.log(left,":A:",right);
     let newArray = [];
     let i=0;
     let j=0;
@@ -111,4 +112,4 @@ function join(left,right){
 }
 
 let sortedArray = mergeSort(arr);
-console.log(sortedArray);
+// console.log(sortedArray);

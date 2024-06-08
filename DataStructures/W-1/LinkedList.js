@@ -196,6 +196,24 @@ class LinkedList{
         }
     }
 
+    recursiveReverse(node = this.head, prev = null){
+        if(!node){
+            this.head = prev;
+            return;
+        }
+
+        const nodeNext = node.next;
+
+        this.recursiveReverse(nodeNext,node);
+
+        node.next = prev;
+
+        if(!prev){
+            this.tail = prev;
+        }
+    }
+
+
     print(){
         if(this.isEmpty()){
             console.log("List is empty")
@@ -214,26 +232,29 @@ class LinkedList{
 
 }
 
-// const linkedList = new LinkedList();
 
-// // linkedList.append(10);
-// // linkedList.append(20);
-// // linkedList.append(30);
-// // linkedList.append(40);
-// // linkedList.prepend(100);
-// // linkedList.prepend(-100);
-// // linkedList.append(50)
-// // linkedList.removeFromStart()
-// // linkedList.removeFromEnd()
-// // linkedList.removeFromEnd()
-// // linkedList.reverse()
-// // linkedList.removeFromMiddle()
-// const arr = [12,34,12,11,67,12];
-// linkedList.removeByvalue(-100)
+const linkedList = new LinkedList();
+
+// linkedList.append(10);
+// linkedList.append(20);
+// linkedList.append(30);
+// linkedList.append(40);
+// linkedList.prepend(100);
+// linkedList.prepend(-100);
+// linkedList.append(50)
+// linkedList.removeFromStart()
+// linkedList.removeFromEnd()
+// linkedList.removeFromEnd()
+// linkedList.reverse()
+// linkedList.removeFromMiddle()
+const arr = [12,34,12,11,67,12];
+linkedList.removeByvalue(-100)
 // linkedList.removeByIndex(4);
-// linkedList.arrayToLinkedList(arr)
+linkedList.arrayToLinkedList(arr)
 // linkedList.removeDuplicates()
-// linkedList.print();
+linkedList.print();
 
+linkedList.recursiveReverse();
+linkedList.print()
 
-module.exports = LinkedList 
+// module.exports = LinkedList 
