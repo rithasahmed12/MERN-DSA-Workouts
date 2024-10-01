@@ -78,18 +78,22 @@ class DoublyLinkedList{
         this.size--;
     }
 
+
+
     reverse(){
-        let prev = null;
+        let temp = null;
         let curr = this.head;
+        
         while(curr){
-            let next = curr.next;
-            curr.prev = next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+            temp = curr.prev;
+            curr.prev = curr.next;
+            curr.next = temp;
+            curr=curr.prev;
+        
         }
-        this.tail = this.head;
-        this.head = prev;
+        if(temp !== null){
+            this.head = temp.prev;
+        }
     }
 
     removeFromMiddle(){
@@ -218,5 +222,6 @@ doublyLinkedList.prepend(20);
 // doublyLinkedList.removeFromMiddle()
 doublyLinkedList.removeByValue(30);
 doublyLinkedList.removeDuplicates();
+doublyLinkedList.reverse();
 doublyLinkedList.print()
 

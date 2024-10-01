@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 
+
+
 const WithCounter = (OldComponent) => {
   return function enhancedComponent(props){
     const [count,setCount] = useState(0);
@@ -13,3 +15,7 @@ const WithCounter = (OldComponent) => {
 }
 
 export default WithCounter
+
+
+
+

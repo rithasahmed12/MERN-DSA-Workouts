@@ -20,7 +20,7 @@ function bubbleSort(arr){
 // console.log(arr);
 
 function insertionSort(arr){
-    
+    // [12,40,-1,-9,4,2,6,34]
     for(let i=1; i<arr.length; i++){
         let numberToInsert = arr[i]
         let j=i;

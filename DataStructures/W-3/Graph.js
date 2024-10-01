@@ -120,5 +120,7 @@ graph.addEdge(70,80)
 
 // graph.removeVertex(10);
 
+console.log(graph.adjList)
+
 graph.display();
-graph.dfs(5);
+graph.bfs(5);

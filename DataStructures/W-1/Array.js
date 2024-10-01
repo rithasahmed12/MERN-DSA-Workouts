@@ -58,5 +58,17 @@ const chunkSize = 3;
  console.log(chunkArray(originalArray, chunkSize));
 
 
+// 4. reverse an array with recursion
+ let arr = [1,2,1,2];
 
+ function reverse(arr,start=0,end=arr.length-1){
+     if(start >= end){
+         return arr;
+     }
+     [arr[start],arr[end]] = [arr[end],arr[start]];
+     
+     return reverse(arr,start+1,end-1);
+ }
+ 
+ console.log(reverse(arr))
 

@@ -1,7 +1,7 @@
 
 // 1.check string is palindrome using recursion
 
-let string = 'MaM';
+let string = 'MadaaM';
 // reverse string using recurtion
 function stringReverse(string){
     if(string.length < 1){
@@ -14,6 +14,7 @@ function stringReverse(string){
 
 function isStringPalindrome(string){
     let reversed = stringReverse(string);
+    console.log(reversed)
     return reversed === string;
 }
 

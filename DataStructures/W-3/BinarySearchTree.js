@@ -39,6 +39,19 @@ class BST {
             }
         }
     }
+    
+    countLeafNode(root= this.root){
+        if(!root){
+            return 0;
+        }
+        
+        if(root.left == null && root.right === null){
+            return 1;
+        }
+         
+        return this.countLeafNode(root.left)+this.countLeafNode(root.right)
+    }
+
     search(value){
         if(this.isEmpty()){
             return false 
@@ -88,6 +101,17 @@ class BST {
       }
     }
 
+    height(root = this.root){
+         if(root === null){
+            return -1;
+         }
+
+         const leftHieght = this.height(root.left);
+         const rightHieght = this.height(root.right);
+
+         return Math.max(leftHieght,rightHieght)+1
+    }
+
     inOrder(){
         if(this.isEmpty()){
             return null;
@@ -135,10 +159,12 @@ class BST {
                 return this.max(root.right);
             }
     }
+
     isValidBST(){
-        return this.checkBST(this.root,Number.NEGATIVE_INFINITY,Number.POSITIVE_INFINITY);
+        return this.checkValid(this.root,Number.NEGATIVE_INFINITY,Number.POSITIVE_INFINITY);
     }
-    checkBST(root,min,max){
+
+    checkValid(root,min,max){
         if(root === null){
             return true;
         }
@@ -147,30 +173,54 @@ class BST {
             return false;
         }
 
-        return (this.checkBST(root.left,min,root.value) && this.checkBST(root.right,root.value.max))
+        return (this.checkValid(root.left,min,root.value) && this.checkValid(root.right,root.value,max));
     }
 
     closestValue(target){
         let root = this.root;
         let closestValue = this.root.value;
+
         while(root){
-            if(Math.abs(target - root.value) < Math.abs(target-closestValue)){
+            if(Math.abs(target - root.value) < Math.abs(target - closestValue)){
                 closestValue = root.value;
             }
+
             if(target < root.value){
                 root = root.left;
             }else if(target > root.value){
-                root = root.right;
+                root= root.right;
             }else{
                 break;
             }
         }
         return closestValue;
     }
+
+    findSecondLargest(){
+        if(!this.root || !this.root.left && !this.root.right){
+            return null;
+        }
+
+        let curr = this.root;
+        let parent = null
+
+        while(curr.right){
+            parent = curr;
+            curr = curr.right;
+        }
+
+        if(curr.left){
+            return this.max(curr.left);
+        }
+
+        return parent ? parent.value : curr.left.value;
+    }
+
     
     delete(value){
         this.root = this.deleteNode(this.root,value);
     }
+    
     deleteNode(root,value){
         if(root === null){
             return root;
@@ -204,6 +254,8 @@ binarySearchTree.insert(15)
 binarySearchTree.insert(5)
 binarySearchTree.insert(6)
 binarySearchTree.insert(8)
+binarySearchTree.insert(14)
+binarySearchTree.insert(13)
 
 // binarySearchTree.inOrder();
 // binarySearchTree.preOrder();
@@ -214,7 +266,8 @@ console.log(binarySearchTree.min());
 console.log(binarySearchTree.max());
 console.log(binarySearchTree.isValidBST())
 console.log(binarySearchTree.closestValue(13));
-binarySearchTree.delete(6);
+// binarySearchTree.delete(6);
 console.log(binarySearchTree.search(6));
-
+console.log("Second largest element:", binarySearchTree.findSecondLargest());
+console.log('Height:',binarySearchTree.height());
 

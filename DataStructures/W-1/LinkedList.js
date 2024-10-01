@@ -5,6 +5,7 @@
 // removeByIndex, removeByValue
 // toArray, arrayToLinkedList
 // removeDuplicates, print
+// getMiddle, sort
 
 class Node {
     constructor(value){
@@ -213,6 +214,66 @@ class LinkedList{
         }
     }
 
+    sort(){
+        this.head = this.mergeSort(this.head);
+        this.updateTail();
+    }
+    
+    mergeSort(head){
+        if(head === null || head.next === null){
+            return head;
+        }
+        
+        let middle = this.getMiddle(head);
+        let middleNext = middle.next;
+        middle.next = null;
+        
+        const left = this.mergeSort(head);
+        const right = this.mergeSort(middleNext);
+        
+        return this.sortedMerge(left,right);
+    }
+    
+    sortedMerge(a,b){
+        let result = null;
+        if(a === null ) return b;
+        if(b === null ) return a;
+        
+        if(a.value <= b.value){
+            result = a;
+            result.next = this.sortedMerge(a.next,b);
+        }else{
+            result = b;
+            result.next = this.sortedMerge(a,b.next);
+        }
+        return result;
+    }
+    
+    updateTail(){
+        if(this.isEmpty()){
+            this.tail = null
+        }else{
+            let curr = this.head;
+            while(curr.next !== null){
+                curr = curr.next;
+            }
+            this.tail = curr;
+        }
+    }
+    
+    
+    getMiddle(head){
+        if(this.isEmpty()) return null;
+        let slow = head;
+        let fast = head;
+        
+        while(fast.next !== null && fast.next.next !== null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
 
     print(){
         if(this.isEmpty()){
@@ -235,26 +296,27 @@ class LinkedList{
 
 const linkedList = new LinkedList();
 
-// linkedList.append(10);
-// linkedList.append(20);
-// linkedList.append(30);
-// linkedList.append(40);
-// linkedList.prepend(100);
-// linkedList.prepend(-100);
-// linkedList.append(50)
+linkedList.append(10);
+linkedList.prepend(-100);
+linkedList.append(40);
+linkedList.prepend(100);
+linkedList.append(50)
+linkedList.append(30);
+linkedList.append(20);
+linkedList.sort()
 // linkedList.removeFromStart()
 // linkedList.removeFromEnd()
 // linkedList.removeFromEnd()
 // linkedList.reverse()
 // linkedList.removeFromMiddle()
-const arr = [12,34,12,11,67,12];
-linkedList.removeByvalue(-100)
+// const arr = [12,34,12,11,67,12];
+// linkedList.removeByvalue(-100)
 // linkedList.removeByIndex(4);
-linkedList.arrayToLinkedList(arr)
+// linkedList.arrayToLinkedList(arr)
 // linkedList.removeDuplicates()
 linkedList.print();
 
-linkedList.recursiveReverse();
-linkedList.print()
+// linkedList.recursiveReverse();
+// linkedList.print()
 
 // module.exports = LinkedList 
