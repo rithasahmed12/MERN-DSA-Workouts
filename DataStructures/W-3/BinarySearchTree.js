@@ -243,6 +243,26 @@ class BST {
         }
         return root;
     }
+
+    isPrime(value){
+        for(let i=2 ; i<value; i++){
+            if(value % i === 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    printPrime(root = this.root){
+        if(root){
+            this.printPrime(root.left);
+            if(this.isPrime(root.value)){
+                console.log(root.value);
+                
+            }
+            this.printPrime(root.right);
+        }
+    }
 }
 
 const binarySearchTree = new BST();
@@ -270,4 +290,6 @@ console.log(binarySearchTree.closestValue(13));
 console.log(binarySearchTree.search(6));
 console.log("Second largest element:", binarySearchTree.findSecondLargest());
 console.log('Height:',binarySearchTree.height());
+binarySearchTree.printPrime();
+
 

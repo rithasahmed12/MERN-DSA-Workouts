@@ -290,20 +290,45 @@ class LinkedList{
         }
     }
 
+    printPrime(){
+        if(this.isEmpty()){
+            console.log("List is Empty");
+        }else{
+            let curr = this.head;
+            let value = "";
+            while(curr){
+                if(this.isPrime(curr.value)){
+                    value += " "+curr.value;
+                }
+                curr = curr.next;
+            }
+            console.log(value);
+        }
+    }
+
+    isPrime(value){
+        for(let i=2 ; i<value; i++){
+            if(value % i === 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }
 
 
 const linkedList = new LinkedList();
 
+linkedList.append(2);
+// linkedList.prepend(-100);
+linkedList.append(6);
+linkedList.prepend(3);
+linkedList.append(9)
+linkedList.append(5);
 linkedList.append(10);
-linkedList.prepend(-100);
-linkedList.append(40);
-linkedList.prepend(100);
-linkedList.append(50)
-linkedList.append(30);
-linkedList.append(20);
-linkedList.sort()
+// linkedList.sort()
 // linkedList.removeFromStart()
 // linkedList.removeFromEnd()
 // linkedList.removeFromEnd()
@@ -314,7 +339,8 @@ linkedList.sort()
 // linkedList.removeByIndex(4);
 // linkedList.arrayToLinkedList(arr)
 // linkedList.removeDuplicates()
-linkedList.print();
+// linkedList.print();
+linkedList.printPrime();
 
 // linkedList.recursiveReverse();
 // linkedList.print()
